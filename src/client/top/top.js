@@ -5,6 +5,8 @@
 /*jslint node: true */
 "use strict";
 
+require("./top.less");
+
 (function (angular) {
     var templateUrl = require("./top.tpl.jade");
 
@@ -31,7 +33,8 @@
                 activateSearch: function () {
                     this.searchActive = true;
                 },
-                switchLanguage: function () {
+                switchLanguage: function (e) {
+                    e.stopPropagation();
                     $log.info("Switching language");
                 }
             };

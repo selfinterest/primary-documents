@@ -1,0 +1,20 @@
+{
+  "name": "primary-documents-new",
+  "version": "0.0.0",
+  "homepage": "https://github.com/selfinterest/primary-documents",
+  "authors": [
+    "terrence <parliamentaryterrence@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-menu-aim": "~1.0.0",
+    "yamm3": "~1.1.0"
+  }
+}

@@ -1,12 +1,20 @@
-nav.navbar.navbar-default
+nav.navbar.yamm.navbar-default
     .container
         .collapse.navbar-collapse
             ul.nav.navbar-nav
                 li(ui-sref-active="active")
-                    a(href, ui-sref="main.home", ng-click="TopController.navigationMenu.deactivateSearch()") Home
-                li(ng-class="{active: TopController.navigationMenu.searchActive}")
-                    a(ng-click="TopController.navigationMenu.toggleSearch()", href="") Search
+                    a(href="", ui-sref="main.home", ng-click="TopController.navigationMenu.deactivateSearch()") Home
+                li(uib-dropdown).dropdown.yamm-hw
+                    a(href="", uib-dropdown-toggle).dropdown-toggle Search <span class="caret"></span>
+                    ul(role="menu").dropdown-menu
+                        li
+                            div.search-menu.yamm-content
+                                div.row
+                                    div.col-lg-12
+                                        uib-accordion
+                                            uib-accordion-group(heading="Search by date of document")
+                                                p Search by date
                 li(ui-sref-active="active")
                     a(href, ui-sref="main.about", ng-click="TopController.navigationMenu.deactivateSearch()") About
                 li
-                    a(ng-click="TopController.navigationMenu.switchLanguage()") Francais
+                    a(ng-click="TopController.navigationMenu.switchLanguage($event)") Francais

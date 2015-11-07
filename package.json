@@ -30,9 +30,11 @@
   },
   "dependencies": {
     "angular": "^1.4.7",
+    "angular-animate": "^1.4.7",
     "angular-bootstrap-npm": "^0.14.3",
     "angular-ui-router": "^0.2.15",
     "bootstrap-less": "^3.3.8",
+    "jquery": "^2.1.4",
     "open-browser-webpack-plugin": "0.0.1"
   }
 }
