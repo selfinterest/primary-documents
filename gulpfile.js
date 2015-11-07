@@ -61,3 +61,37 @@ myDevConfig.debug = true;
 
 // create a single instance of the compiler to allow caching
 var devCompiler = webpack(myDevConfig);
+
+gulp.task("webpack:build-dev", function(callback) {
+	// run webpack
+	devCompiler.run(function(err, stats) {
+		if(err) throw new gutil.PluginError("webpack:build-dev", err);
+		gutil.log("[webpack:build-dev]", stats.toString({
+			colors: true
+		}));
+		callback();
+	});
+});
+
+
+gulp.task("webpack-dev-server", function(callback) {
+	//as per: https://github.com/webpack/webpack-with-common-libs/blob/master/gulpfile.js
+
+	// modify some webpack config options
+	var myConfig = Object.create(webpackConfig);
+	myConfig.devtool = "eval";
+	myConfig.debug = true;
+
+	// Start a webpack-dev-server
+	new WebpackDevServer(webpack(myConfig), {
+		publicPath: "/" + myConfig.output.publicPath,
+		stats: {
+			colors: true
+		}
+	}).listen(8080, "localhost", function(err) {
+		if(err) throw new gutil.PluginError("webpack-dev-server", err);
+		gutil.log("[webpack-dev-server]", "http://localhost:8080/webpack-dev-server/index.html");
+	});
+});
+
+
