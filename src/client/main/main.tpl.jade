@@ -1,3 +1,2 @@
-div
-    .container(ui-view="top")#top
-    .container(ui-view="bottom")#bottom
+.container(ng-include="TopController.templateUrl", ng-controller="TopController as TopController")#top
+.container(ng-include="BottomController.templateUrl", ng-controller="BottomController as BottomController")#bottom
