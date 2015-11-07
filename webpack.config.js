@@ -1,13 +1,13 @@
 var path = require("path");
 var webpack = require("webpack");
-
-var clientPath = path.join(__dirname, "src", "client")
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+var clientPath = path.join(__dirname, "src", "client");
 var clientDistPath = path.join(__dirname, "dist", "client");
 
 module.exports = {
 	cache: true,
 	entry: {
-		main: path.join(clientPath, "main.js")
+		app: [path.join(clientPath, "app.js")]
 	},
 	output: {
 		filename: "[name].js",
@@ -15,11 +15,14 @@ module.exports = {
 		path: clientDistPath,
 		publicPath: "dist/"	
 	},
+	plugins: [
+		new OpenBrowserPlugin({ url: 'http://localhost:8080' })
+	],
 	module: {
 		preLoaders: [
 			{
 				test: "/\.js$",
-				loader: 'baggage?[file].jade&[file].less'
+				loader: 'baggage?[file].tpl.jade&[file].less'
 			}
 		],
 		loaders: [
@@ -28,7 +31,7 @@ module.exports = {
 			{ test: /\.less$/,  loader: "style!css!less" },
 
 			// Angular templates (as Jade! Pretty cool!)	
-			{ test: /\.tpl\.jade$/, loader: "ngtemplate!html!jade-html"},
+			{ test: /\.tpl\.jade$/, loader: "ngtemplate?relativeTo=src/client!html!jade-html"},
 		 	
 		 	//{ test: /\.jade$/,	loader: "html!jade-html" },
 			

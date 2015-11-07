@@ -30,7 +30,7 @@ gulp.task("build", ["copy", "webpack:build"]);
 
 //Copy server files to dist directory (these don't need to be compiled in any way.)
 gulp.task("copy", ["clean"], function(){
-  gulp.src(["package.json", "src/server/**/*.js"], {base: "."})
+  gulp.src(["package.json", "src/server/**/*.js", "src/client/index.html"], {base: "src"})
     .pipe(gulp.dest("dist/"))
 });
 
@@ -81,10 +81,18 @@ gulp.task("webpack-dev-server", function(callback) {
 	var myConfig = Object.create(webpackConfig);
 	myConfig.devtool = "eval";
 	myConfig.debug = true;
-
+    //The next line makes hot reloading work
+    myConfig.entry.app.unshift("webpack-dev-server/client?http://localhost:8080");
 	// Start a webpack-dev-server
 	new WebpackDevServer(webpack(myConfig), {
-		publicPath: "/" + myConfig.output.publicPath,
+      //this is where the server will make available its in-memory webpack bundle; see the index.html file.
+      //If we made it /assets, then /assets/main.js would contain the bundle.
+        publicPath: "",
+        historyApiFallback: true,
+        ///inline: true,
+        progress: true,
+		//publicPath: "/" + myConfig.output.publicPath,
+        contentBase: "src/client",
 		stats: {
 			colors: true
 		}

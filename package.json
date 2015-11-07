@@ -15,6 +15,7 @@
     "file-loader": "^0.8.4",
     "gulp": "^3.9.0",
     "gulp-util": "^3.0.7",
+    "html-loader": "^0.3.0",
     "jade": "^1.11.0",
     "jade-html-loader": "0.0.3",
     "less": "^2.5.3",
@@ -26,5 +27,12 @@
     "url-loader": "^0.5.6",
     "webpack": "^1.12.3",
     "webpack-dev-server": "^1.12.1"
+  },
+  "dependencies": {
+    "angular": "^1.4.7",
+    "angular-bootstrap-npm": "^0.14.3",
+    "angular-ui-router": "^0.2.15",
+    "bootstrap-less": "^3.3.8",
+    "open-browser-webpack-plugin": "0.0.1"
   }
 }
