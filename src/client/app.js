@@ -19,6 +19,8 @@ app.run(["$rootScope", function ($rootScope) {
 
 require("./bottom/bottom.js");
 require("./top/top.js");
+require("./home/home.js");
+require("./about/about.js");
 
 require("./main/main.js");
 

@@ -1,2 +1,12 @@
-.container
-    h1 PrimaryDocuments.ca
+nav.navbar.navbar-default
+    .container
+        .collapse.navbar-collapse
+            ul.nav.navbar-nav
+                li(ui-sref-active="active")
+                    a(href, ui-sref="main.home", ng-click="TopController.navigationMenu.deactivateSearch()") Home
+                li(ng-class="{active: TopController.navigationMenu.searchActive}")
+                    a(ng-click="TopController.navigationMenu.toggleSearch()", href="") Search
+                li(ui-sref-active="active")
+                    a(href, ui-sref="main.about", ng-click="TopController.navigationMenu.deactivateSearch()") About
+                li
+                    a(ng-click="TopController.navigationMenu.deactivateSearch(); TopController.navigationMenu.switchLanguage()") Francais

@@ -4,16 +4,21 @@
 
 /*jslint node: true */
 /*global angular */
+
 "use strict";
 
+require("./main.less");
 var templateUrl = require("./main.tpl.jade");
 
 angular.module("PrimaryDocuments")
-    .config(["$urlRouterProvider", "$stateProvider", function ($urlRouterProvider, $stateProvider) {
+    .config(["$urlRouterProvider", "$stateProvider", "$locationProvider", function ($urlRouterProvider, $stateProvider, $locationProvider) {
+        $locationProvider.html5Mode(true);
         $stateProvider
             .state("main", {
-                url: "",
-                templateUrl: templateUrl
+                url: "/",
+                templateUrl: templateUrl,
+                abstract: true
+                //abstract: true
             })
            /* .state("main.top", {
                 url: "",
