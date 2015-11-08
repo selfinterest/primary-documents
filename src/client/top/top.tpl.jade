@@ -12,9 +12,9 @@ nav.navbar.yamm.navbar-default
                                 div(ng-if="TopController.navigationMenu.searchSubmenu != 'document-type'")
                                     h3 Search
                                     div.list-group
-                                        a(href, ui-sref="main.date", ui-sref-active="active").list-group-item <b>Search by date of document</b>
-                                        a(href="").list-group-item <b>Search by individual author or speaker</b>
-                                        a(href="").list-group-item <b>Search by corporate author or institution</b>
+                                        a(href, ui-sref="main.search({ field: 'date' })", ui-sref-active="active").list-group-item <b>Search by date of document</b>
+                                        a(href, ui-sref="main.search({ field: 'author' })", ui-sref-active="active").list-group-item <b>Search by individual author or speaker</b>
+                                        a(href, ui-sref="main.search({ field: 'corporate_author' })", ui-sref-active="active").list-group-item <b>Search by corporate author or institution</b>
                                         a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, 'document-type')").list-group-item <b>Search by type of document</b> <span class="pull-right"><b>&gt;</b></span>
                                 div(ng-if="TopController.navigationMenu.searchSubmenu == 'document-type'")
                                     h3 Search by type of document

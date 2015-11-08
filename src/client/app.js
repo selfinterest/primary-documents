@@ -27,14 +27,19 @@ app.run(["$rootScope", function ($rootScope) {
     $rootScope.$on("$stateChangeError", console.log.bind(console));
 }]);
 
-require("./bottom/bottom.js");
+
+["bottom", "top", "home", "about", "search", "main"].forEach(function (part) {
+    require("./" + part + "/" + part + ".js");
+});
+
+/*require("./bottom/bottom.js");
 require("./top/top.js");
 require("./home/home.js");
 require("./about/about.js");
-require("./date/date.js");
+require("./search/search.js");
 
 require("./main/main.js");
-
+*/
 
 
 
