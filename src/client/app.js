@@ -17,8 +17,6 @@ require("angular-bootstrap-npm");
 require("ng-fx");
 require("../assets/js/angular-mega-menu.js");
 
-//require("../../bower_components/angular-menu-aim/build/flyout-tpls.min.js");
-//require("../../bower_components/angular-menu-aim/src/flyout.css");
 
 //Declare the main Angular module for the app
 var app = angular.module("PrimaryDocuments", ["ui.bootstrap", "ui.router", "mega-menu", "ngAnimate", "ng-fx"]);
@@ -32,15 +30,6 @@ app.run(["$rootScope", "$state", function ($rootScope, $state) {
 ["bottom", "top", "home", "about", "search", "main"].forEach(function (part) {
     require("./" + part + "/" + part + ".js");
 });
-
-/*require("./bottom/bottom.js");
-require("./top/top.js");
-require("./home/home.js");
-require("./about/about.js");
-require("./search/search.js");
-
-require("./main/main.js");
-*/
 
 
 

@@ -4,6 +4,9 @@ var gulp = require("gulp")
   , WebpackDevServer = require("webpack-dev-server")
   , del = require("del")
   , path = require("path")
+  , mocha = require('gulp-mocha')
+  , plumber = require('gulp-plumber')
+  , watch = require("gulp-watch")
   , webpackConfig = require("./webpack.config.js")
 ;
 
@@ -100,6 +103,29 @@ gulp.task("webpack-dev-server", function(callback) {
 		if(err) throw new gutil.PluginError("webpack-dev-server", err);
 		gutil.log("[webpack-dev-server]", "http://localhost:8080/webpack-dev-server/index.html");
 	});
+});
+
+
+//Tests and whatnot
+
+// Run server tests once
+gulp.task('test:server', function(cb){
+  var mochaErr;
+
+
+  gulp.src(['src/server/**/*.spec.js'], {read: false})
+    .pipe(plumber())
+    .pipe(mocha({reporter: 'spec'}))
+    .on('error', function (err) {
+      mochaErr = err;
+    })
+    .on('end', function () {
+      cb(mochaErr);
+    });
+});
+
+gulp.task('watch', function(cb){
+  gulp.watch(['src/server/**'], ['test:server']);
 });
 
 
