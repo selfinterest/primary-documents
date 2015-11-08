@@ -19,12 +19,13 @@ require("./top.less");
         .factory("navigationMenu", ["$log", function ($log) {
             return {
                 searchActive: false,
-                toggleSearch: function () {
-                    if (this.searchActive) {
+                toggleSearch: function (open) {
+                    if (!open) {
                         this.deactivateSearch();
                     } else {
                         this.activateSearch();
                     }
+
                     $log.info("Search menu is " + this.searchActive ? "on" : "off");
                 },
                 deactivateSearch: function () {

@@ -3,18 +3,20 @@ nav.navbar.yamm.navbar-default
         .collapse.navbar-collapse
             ul.nav.navbar-nav
                 li(ui-sref-active="active")
-                    a(href="", ui-sref="main.home", ng-click="TopController.navigationMenu.deactivateSearch()") Home
-                li(uib-dropdown).dropdown.yamm-fw
-                    a(href="", uib-dropdown-toggle).dropdown-toggle Search <span class="caret"></span>
-                    ul(role="menu").dropdown-menu
+                    a(href="", ui-sref="main.home") Home
+                li(uib-dropdown, on-toggle="TopController.navigationMenu.toggleSearch(open)").yamm-fw
+                    a(href="", uib-dropdown-toggle, on-toggle="TopController.navigationMenu.activateSearch()") Search <span class="caret"></span>
+                    ul(role="menu", uib-dropdown-menu)
                         li
-                            div(ng-switch, on="TopController.navigationMenu.searchSubmenu").search-menu.yamm-content
-                                div(ng-switch-default).list-group
-                                    a(href, ui-sref="main.date", ui-sref-active="active").list-group-item <b>Search by date of document</b>
-                                    a(href="").list-group-item <b>Search by individual author or speaker</b>
-                                    a(href="").list-group-item <b>Search by corporate author or institution</b>
-                                    a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, 'document-type')").list-group-item <b>Search by type of document</b> <span class="pull-right"><b>&gt;</b></span>
-                                div(ng-switch-when="document-type")
+                            div.search-menu
+                                div(ng-if="TopController.navigationMenu.searchSubmenu != 'document-type'")
+                                    h3 Search
+                                    div.list-group
+                                        a(href, ui-sref="main.date", ui-sref-active="active").list-group-item <b>Search by date of document</b>
+                                        a(href="").list-group-item <b>Search by individual author or speaker</b>
+                                        a(href="").list-group-item <b>Search by corporate author or institution</b>
+                                        a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, 'document-type')").list-group-item <b>Search by type of document</b> <span class="pull-right"><b>&gt;</b></span>
+                                div(ng-if="TopController.navigationMenu.searchSubmenu == 'document-type'")
                                     h3 Search by type of document
                                     div.list-group
                                         a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, false)").list-group-item <b>Newspaper / magazine article</b>
@@ -24,6 +26,6 @@ nav.navbar.yamm.navbar-default
                                         a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, false)").list-group-item <b>Secondary source in which the primary source is quoted or cited.</b>
                                         a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, false)").list-group-item <b>&lt; Back</b>
                 li(ui-sref-active="active")
-                    a(href, ui-sref="main.about", ng-click="TopController.navigationMenu.deactivateSearch()") About
+                    a(href, ui-sref="main.about") About
                 li
                     a(ng-click="TopController.navigationMenu.switchLanguage($event)") Francais
