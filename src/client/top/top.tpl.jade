@@ -4,16 +4,17 @@ nav.navbar.yamm.navbar-default
             ul.nav.navbar-nav
                 li(ui-sref-active="active")
                     a(href="", ui-sref="main.home", ng-click="TopController.navigationMenu.deactivateSearch()") Home
-                li(uib-dropdown).dropdown.yamm-hw
+                li(uib-dropdown).dropdown.yamm-fw
                     a(href="", uib-dropdown-toggle).dropdown-toggle Search <span class="caret"></span>
                     ul(role="menu").dropdown-menu
                         li
-                            div.search-menu.yamm-content
-                                div.row
-                                    div.col-lg-12
-                                        uib-accordion
-                                            uib-accordion-group(heading="Search by date of document")
-                                                p Search by date
+                            div(ng-switch, on="TopController.navigationMenu.searchSubmenu").search-menu.yamm-content
+                                div.list-group
+                                    a(href, ui-sref="main.date", ui-sref-active="active", ng-switch-default).list-group-item <b>Search by date of document</b>
+                                    a(href="", ng-switch-default).list-group-item <b>Search by individual author or speaker</b>
+                                    a(href="", ng-switch-default).list-group-item <b>Search by corporate author or institution</b>
+                                    a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, 'document-type')" ng-switch-default).list-group-item <b>Search by type of document</b>
+                                    a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, false)", ng-switch-when="document-type").list-group-item Back
                 li(ui-sref-active="active")
                     a(href, ui-sref="main.about", ng-click="TopController.navigationMenu.deactivateSearch()") About
                 li

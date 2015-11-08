@@ -35,6 +35,7 @@
     "angular-ui-router": "^0.2.15",
     "bootstrap-less": "^3.3.8",
     "jquery": "^2.1.4",
+    "ng-fx": "^2.0.3",
     "open-browser-webpack-plugin": "0.0.1"
   }
 }

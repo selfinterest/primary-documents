@@ -36,6 +36,10 @@ require("./top.less");
                 switchLanguage: function (e) {
                     e.stopPropagation();
                     $log.info("Switching language");
+                },
+                selectSubmenu: function(e, menu){
+                    e.stopPropagation();
+                    this.searchSubmenu = menu;
                 }
             };
             /*return {
