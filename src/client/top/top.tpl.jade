@@ -9,12 +9,20 @@ nav.navbar.yamm.navbar-default
                     ul(role="menu").dropdown-menu
                         li
                             div(ng-switch, on="TopController.navigationMenu.searchSubmenu").search-menu.yamm-content
-                                div.list-group
-                                    a(href, ui-sref="main.date", ui-sref-active="active", ng-switch-default).list-group-item <b>Search by date of document</b>
-                                    a(href="", ng-switch-default).list-group-item <b>Search by individual author or speaker</b>
-                                    a(href="", ng-switch-default).list-group-item <b>Search by corporate author or institution</b>
-                                    a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, 'document-type')" ng-switch-default).list-group-item <b>Search by type of document</b>
-                                    a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, false)", ng-switch-when="document-type").list-group-item Back
+                                div(ng-switch-default).list-group
+                                    a(href, ui-sref="main.date", ui-sref-active="active").list-group-item <b>Search by date of document</b>
+                                    a(href="").list-group-item <b>Search by individual author or speaker</b>
+                                    a(href="").list-group-item <b>Search by corporate author or institution</b>
+                                    a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, 'document-type')").list-group-item <b>Search by type of document</b> <span class="pull-right"><b>&gt;</b></span>
+                                div(ng-switch-when="document-type")
+                                    h3 Search by type of document
+                                    div.list-group
+                                        a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, false)").list-group-item <b>Newspaper / magazine article</b>
+                                        a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, false)").list-group-item <b>Debate / minutes / proceedings of a parliament or legislature</b>
+                                        a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, false)").list-group-item <b>Committee meeting of a parliament or legislature (including proceedings, minutes, etc.)</b>
+                                        a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, false)").list-group-item <b>Speech or pamphlet</b>
+                                        a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, false)").list-group-item <b>Secondary source in which the primary source is quoted or cited.</b>
+                                        a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, false)").list-group-item <b>&lt; Back</b>
                 li(ui-sref-active="active")
                     a(href, ui-sref="main.about", ng-click="TopController.navigationMenu.deactivateSearch()") About
                 li

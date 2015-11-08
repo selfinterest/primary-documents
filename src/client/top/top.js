@@ -29,6 +29,7 @@ require("./top.less");
                 },
                 deactivateSearch: function () {
                     this.searchActive = false;
+                    this.searchSubmenu = false;
                 },
                 activateSearch: function () {
                     this.searchActive = true;
