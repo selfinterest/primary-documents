@@ -4,7 +4,7 @@ nav.navbar.yamm.navbar-default
             ul.nav.navbar-nav
                 li(ui-sref-active="active")
                     a(href="", ui-sref="main.home") Home
-                li(uib-dropdown, on-toggle="TopController.navigationMenu.toggleSearch(open)").yamm-fw
+                li(uib-dropdown, on-toggle="TopController.navigationMenu.toggleSearch(open)", ng-class="{ active: TopController.$state.is('main.search') }").yamm-fw
                     a(href="", uib-dropdown-toggle, on-toggle="TopController.navigationMenu.activateSearch()") Search <span class="caret"></span>
                     ul(role="menu", uib-dropdown-menu)
                         li
@@ -13,17 +13,17 @@ nav.navbar.yamm.navbar-default
                                     h3 Search
                                     div.list-group
                                         a(href, ui-sref="main.search({ field: 'date' })", ui-sref-active="active").list-group-item <b>Search by date of document</b>
-                                        a(href, ui-sref="main.search({ field: 'author' })", ui-sref-active="active").list-group-item <b>Search by individual author or speaker</b>
-                                        a(href, ui-sref="main.search({ field: 'corporate_author' })", ui-sref-active="active").list-group-item <b>Search by corporate author or institution</b>
+                                        a(href, ui-sref="main.search({ field: 'author:individual' })", ui-sref-active="active").list-group-item <b>Search by individual author or speaker</b>
+                                        a(href, ui-sref="main.search({ field: 'author:corporate' })", ui-sref-active="active").list-group-item <b>Search by corporate author or institution</b>
                                         a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, 'document-type')").list-group-item <b>Search by type of document</b> <span class="pull-right"><b>&gt;</b></span>
                                 div(ng-if="TopController.navigationMenu.searchSubmenu == 'document-type'")
                                     h3 Search by type of document
                                     div.list-group
-                                        a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, false)").list-group-item <b>Newspaper / magazine article</b>
-                                        a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, false)").list-group-item <b>Debate / minutes / proceedings of a parliament or legislature</b>
-                                        a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, false)").list-group-item <b>Committee meeting of a parliament or legislature (including proceedings, minutes, etc.)</b>
-                                        a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, false)").list-group-item <b>Speech or pamphlet</b>
-                                        a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, false)").list-group-item <b>Secondary source in which the primary source is quoted or cited.</b>
+                                        a(href, ui-sref="main.search({ field: 'type:newspaper|magazine' })", ui-sref-active="active", ng-click="TopController.navigationMenu.selectSubmenu($event, false)").list-group-item <b>Newspaper / magazine article</b>
+                                        a(href, ui-sref="main.search({ field: 'type:debate|minutes|proceedings' })", ui-sref-active="active", ng-click="TopController.navigationMenu.selectSubmenu($event, false)").list-group-item <b>Debate / minutes / proceedings of a parliament or legislature</b>
+                                        a(href, ui-sref="main.search({ field: 'type:committee' })", ui-sref-active="active", ng-click="TopController.navigationMenu.selectSubmenu($event, false)").list-group-item <b>Committee meeting of a parliament or legislature (including proceedings, minutes, etc.)</b>
+                                        a(href, ui-sref="main.search({ field: 'type:speech|pamphlet' })", ui-sref-active="active", ng-click="TopController.navigationMenu.selectSubmenu($event, false)").list-group-item <b>Speech or pamphlet</b>
+                                        a(href, ui-sref="main.search({ field: 'type:secondary' })", ui-sref-active="active", ng-click="TopController.navigationMenu.selectSubmenu($event, false)").list-group-item <b>Secondary source in which the primary source is quoted or cited.</b>
                                         a(href="", ng-click="TopController.navigationMenu.selectSubmenu($event, false)").list-group-item <b>&lt; Back</b>
                 li(ui-sref-active="active")
                     a(href, ui-sref="main.about") About

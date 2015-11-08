@@ -11,9 +11,11 @@ require("./top.less");
     var templateUrl = require("./top.tpl.jade");
 
     angular.module("PrimaryDocuments")
-        .controller("TopController", ["navigationMenu", "$scope", function (navigationMenu, $scope) {
+        .controller("TopController", ["navigationMenu", "$scope", "$state", function (navigationMenu, $scope, $state) {
             this.templateUrl = templateUrl;
             this.navigationMenu = navigationMenu;
+            this.$state = $state;
+
             $scope = this;
         }])
         .factory("navigationMenu", ["$log", function ($log) {

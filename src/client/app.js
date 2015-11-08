@@ -23,8 +23,9 @@ require("../assets/js/angular-mega-menu.js");
 //Declare the main Angular module for the app
 var app = angular.module("PrimaryDocuments", ["ui.bootstrap", "ui.router", "mega-menu", "ngAnimate", "ng-fx"]);
 
-app.run(["$rootScope", function ($rootScope) {
+app.run(["$rootScope", "$state", function ($rootScope, $state) {
     $rootScope.$on("$stateChangeError", console.log.bind(console));
+    $rootScope.$state = $state;     //global reference to the state service
 }]);
 
 
