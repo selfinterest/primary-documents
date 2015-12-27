@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema  xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
+
+	
+	<xs:element name="primaryDocument">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="indexCard" type="IndexCardType" minOccurs="1" maxOccurs="1" />
+				<xs:element name="files" type="FilesType" minOccurs="1" maxOccurs="1"/>
+			</xs:sequence>
+		 	<xs:attribute name='version' type='xs:string' use="required"/>
+ 			<xs:attribute name="visible" type="xs:boolean" default="true"/>
+		</xs:complexType>
+
+	</xs:element>
+
+	<xs:complexType name="IndexCardType">
+		<xs:sequence>
+			<xs:element name="title" type="xs:string" use="required"/>
+			<xs:element name="authors" minOccurs="1" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="individualAuthors" minOccurs="0" maxOccurs="1">
+							<xs:complexType>
+								<xs:element name="individualAuthor"	minOccurs"1" maxOccurs="unbounded" type="AuthorType"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="corporateAuthors" minOccurs="0" maxOccurs="1">
+							<xs:complexType>
+								<xs:element name="corporateAuthor" minOccurs="1" maxOccurs="unbounded" type="AuthorType"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="FilesType">
+	</xs:complexType>
+
+	<xs:complexType name="AuthorType">
+		<xs:sequence>
+			<xs:element name="fullName" type="xs:string" use="required"/>
+			<xs:element name="displayName" type="xs:string" use="required"/>
+			<xs:element name="firstName" type="xs:string"/>
+			<xs:element name="lastName" type="xs:string"/>
+			<xs:element name="middleName" type="xs:string"/>
+			<xs:element name="additionalNames">
+				<xs:complexType>
+					<xs:element name="additionalName" minOccurs="1" maxOccurs="unbounded" type="xs:string"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
