@@ -6,7 +6,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="indexCard" type="IndexCardType" minOccurs="1" maxOccurs="1" />
-				<xs:element name="files" type="FilesType" minOccurs="1" maxOccurs="1"/>
+				<!-- <xs:element name="files" type="FilesType" minOccurs="1" maxOccurs="1"/> -->
 			</xs:sequence>
 		 	<xs:attribute name='version' type='xs:string' use="required"/>
  			<xs:attribute name="visible" type="xs:boolean" default="true"/>
@@ -16,38 +16,42 @@
 
 	<xs:complexType name="IndexCardType">
 		<xs:sequence>
-			<xs:element name="title" type="xs:string" use="required"/>
-			<xs:element name="authors" minOccurs="1" maxOccurs="unbounded">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="individualAuthors" minOccurs="0" maxOccurs="1">
-							<xs:complexType>
-								<xs:element name="individualAuthor"	minOccurs"1" maxOccurs="unbounded" type="AuthorType"/>
-							</xs:complexType>
-						</xs:element>
-						<xs:element name="corporateAuthors" minOccurs="0" maxOccurs="1">
-							<xs:complexType>
-								<xs:element name="corporateAuthor" minOccurs="1" maxOccurs="unbounded" type="AuthorType"/>
-							</xs:complexType>
-						</xs:element>
-					</xs:sequence>
-				</xs:complexType>
+			<xs:element name="title" type="xs:string"/>
+			<xs:element name="authors" minOccurs="0" maxOccurs="1" type="AuthorsType"/>
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="FilesType">
+	<xs:complexType name="AuthorsType">
+		<xs:sequence>
+			<xs:element name="individualAuthors" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="individualAuthor"	minOccurs="1" maxOccurs="unbounded" type="AuthorType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="corporateAuthors" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="corporateAuthor" minOccurs="1" maxOccurs="unbounded" type="AuthorType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
 	</xs:complexType>
 
 	<xs:complexType name="AuthorType">
 		<xs:sequence>
-			<xs:element name="fullName" type="xs:string" use="required"/>
-			<xs:element name="displayName" type="xs:string" use="required"/>
+			<xs:element name="fullName" type="xs:string" minOccurs="1"/>
+			<xs:element name="displayName" type="xs:string" minOccurs="1"/>
 			<xs:element name="firstName" type="xs:string"/>
 			<xs:element name="lastName" type="xs:string"/>
 			<xs:element name="middleName" type="xs:string"/>
 			<xs:element name="additionalNames">
 				<xs:complexType>
-					<xs:element name="additionalName" minOccurs="1" maxOccurs="unbounded" type="xs:string"/>
+					<xs:sequence>
+						<xs:element name="additionalName" minOccurs="1" maxOccurs="unbounded" type="xs:string"/>
+					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
