@@ -7,15 +7,25 @@
 				<individualAuthor>
 					<fullName>Terrence C. Watson</fullName>
 					<displayName>Terrence Watson</displayName>
+					<firstName>Terrence</firstName>
+					<lastName>Watson</lastName>
+					<middleName>Charles</middleName>
+					<middleInitial>C</middleInitial>
 				</individualAuthor>
 				<individualAuthor>
 					<fullName>Scott Reid</fullName>
 					<displayName>Scott Reid</displayName>
-				</individualAuthor>
-				<individualAuthor>
-
+					<additionalName>Scott Reid, MP</additionalName>
+					<additionalName>Scottius Reidus</additionalName>
 				</individualAuthor>
 			</individualAuthors>
+			<corporateAuthors>
+				<corporateAuthor>
+					<fullName>Committee to do Awesome things For Everyone</fullName>
+					<displayName>Awesome Committee</displayName>
+					<additionalName>Royal Committee of Awesome Awesome Awesome</additionalName>
+				</corporateAuthor>
+			</corporateAuthors>
 		</authors>
 	</indexCard>
 
