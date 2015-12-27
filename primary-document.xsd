@@ -5,11 +5,21 @@
 	<xs:element name="primaryDocument">
 		<xs:complexType>
 			<xs:sequence>
+				<!-- canonical entries -->
+				<xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+				<xs:element name="authors" minOccurs="0" maxOccurs="1" type="AuthorsType"/>
+				<xs:element name="dates" minOccurs="0" maxOccurs="1" type="DatesType"/>
+				<xs:element name="language" minOccurs="0" maxOccurs="unbounded" type="LanguageType"/>
+
+				<!-- entries for specific sections -->
 				<xs:element name="indexCard" type="IndexCardType" minOccurs="1" maxOccurs="1" />
-				<!-- <xs:element name="files" type="FilesType" minOccurs="1" maxOccurs="1"/> -->
+
+				<!-- files -->
+				<xs:element name="files" type="FilesType" minOccurs="0" maxOccurs="1"/>
 			</xs:sequence>
 		 	<xs:attribute name='version' type='xs:string' use="required"/>
  			<xs:attribute name="visible" type="xs:boolean" default="true"/>
+			<xs:attribute name="id" type="xs:string" use="required"/>
 		</xs:complexType>
 
 	</xs:element>
@@ -18,25 +28,14 @@
 		<xs:sequence>
 			<xs:element name="title" type="xs:string"/>
 			<xs:element name="authors" minOccurs="0" maxOccurs="1" type="AuthorsType"/>
+			<xs:element name="dates" minOccurs="0" maxOccurs="1" type="DatesType"/>
 		</xs:sequence>
 	</xs:complexType>
 
 	<xs:complexType name="AuthorsType">
 		<xs:sequence>
-			<xs:element name="individualAuthors" minOccurs="0" maxOccurs="1">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="individualAuthor"	minOccurs="1" maxOccurs="unbounded" type="AuthorType"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="corporateAuthors" minOccurs="0" maxOccurs="1">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="corporateAuthor" minOccurs="1" maxOccurs="unbounded" type="AuthorType"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
+			<xs:element name="individualAuthor" minOccurs="0" maxOccurs="unbounded" type="AuthorType"/>
+			<xs:element name="corporateAuthor" minOccurs="0" maxOccurs="unbounded" type="AuthorType"/>
 		</xs:sequence>
 	</xs:complexType>
 
@@ -47,14 +46,64 @@
 			<xs:element name="firstName" type="xs:string" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="lastName" type="xs:string" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="middleName" type="xs:string" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="additionalName" type="xs:string" minOccurs="0" maxOccurs="unbounded">
-				<!--<xs:complexType>
-					<xs:sequence>
-						<xs:element name="additionalName" minOccurs="1" maxOccurs="unbounded" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>-->
-			</xs:element>
+			<xs:element name="additionalName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attribute name="visible" type="xs:boolean" default="true"/>
 	</xs:complexType>
+
+	<xs:complexType name="FilesType">
+		<xs:sequence>
+			<xs:element name="pdf" minOccurs="0" maxOccurs="unbounded" type="FileType"/>
+			<xs:element name="txt" minOccurs="0" maxOccurs="unbounded" type="FileType"/>
+			<xs:element name="html" minOccurs="0" maxOccurs="unbounded" type="FileType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="FileType">
+
+		<xs:sequence>
+			<xs:element name="path" minOccurs="1" maxOccurs="unbounded" type="xs:string"/>
+			<xs:element name="name" minOccurs="1" maxOccurs="unbounded" type="xs:string"/>
+			<xs:element name="language" minOccurs="1" maxOccurs="unbounded" type="LanguageType"/>
+		</xs:sequence>
+		<xs:attribute name='iconPath' type='xs:string'/>
+		<xs:attribute name='largeIconPath' type='xs:string'/>
+	</xs:complexType>
+
+	<xs:complexType name="DatesType">
+		<xs:sequence>
+			<!-- This attribute is the date that is displayed. It can be a long string, with any combination of characters -->
+			<xs:element name="displayDate" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="date" type="DateType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="DateType">
+		<xs:sequence>
+			<xs:element name="year" minOccurs="0" maxOccurs="1" type="xs:decimal"/>
+			<xs:element name="month" minOccurs="0" maxOccurs="1" type="xs:decimal"/>
+			<xs:element name="day" minOccurs="0" maxOccurs="1" type="xs:decimal"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="LanguageType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="French"/>
+			<xs:enumeration value="English"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--<xs:complexType name="LanguagesType">
+		<xs:sequence>
+			<xs:element name="language">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="French"/>
+						<xs:enumeration value="English"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="French" minOccurs="0" maxOccurs="1" type="xs:string"/>
+			<xs:element name="English" minOccurs="0" maxOccurs="1" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>-->
 </xs:schema>

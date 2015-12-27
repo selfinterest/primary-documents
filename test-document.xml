@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<primaryDocument visible="true" version="1.0">
+<primaryDocument visible="true" version="1.0" id="10000">
 	<indexCard>
 		<title>Test Document</title>
+
+		<dates>
+			<!-- this is the date that will be displayed on the index card -->
+			<displayDate>2015, July 16 1980</displayDate>
+			<date>
+				<year>2015</year>
+			</date>
+			<date>
+				<year>1980</year>
+				<month>7</month>
+				<day>16</day>
+			</date>
+		</dates>
 		<authors>
-			<individualAuthors>
 				<individualAuthor>
 					<fullName>Terrence C. Watson</fullName>
 					<displayName>Terrence Watson</displayName>
@@ -18,15 +30,47 @@
 					<additionalName>Scott Reid, MP</additionalName>
 					<additionalName>Scottius Reidus</additionalName>
 				</individualAuthor>
-			</individualAuthors>
-			<corporateAuthors>
+
 				<corporateAuthor>
 					<fullName>Committee to do Awesome things For Everyone</fullName>
 					<displayName>Awesome Committee</displayName>
 					<additionalName>Royal Committee of Awesome Awesome Awesome</additionalName>
 				</corporateAuthor>
-			</corporateAuthors>
+
 		</authors>
 	</indexCard>
+	<files>
+		<pdf>
+			<path>/test/path</path>
+			<name>somepdf_part1.pdf</name>
+			<!-- for a bilingual document, include both languages -->
+			<language>English</language>
+			<language>French</language>
+		</pdf>
+		<pdf>
+			<path>/test/path</path>
+			<name>somepdf_part2.pdf</name>
+				<language>English</language>
+				<language>French</language>
+		</pdf>
+		<pdf>
+			<path>/another/path</path>
+			<name>another.pdf</name>
+			<language>English</language>
+		</pdf>
+		<txt>
+			<path>/some/other/path</path>
+			<name>text.txt</name>
+			<languages>
+				<language>French</language>
+			</languages>
+
+		</txt>
+		<html>
+			<path>/some/html/path</path>
+			<name>the_html.html</name>
+			<language>English</language>
+		</html>
+	</files>
 
 </primaryDocument>
