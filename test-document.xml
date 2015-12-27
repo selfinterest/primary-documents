@@ -3,7 +3,19 @@
 	<indexCard>
 		<title>Test Document</title>
 		<authors>
+			<individualAuthors>
+				<individualAuthor>
+					<fullName>Terrence C. Watson</fullName>
+					<displayName>Terrence Watson</displayName>
+				</individualAuthor>
+				<individualAuthor>
+					<fullName>Scott Reid</fullName>
+					<displayName>Scott Reid</displayName>
+				</individualAuthor>
+				<individualAuthor>
 
+				</individualAuthor>
+			</individualAuthors>
 		</authors>
 	</indexCard>
 

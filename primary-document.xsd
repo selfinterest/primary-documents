@@ -42,12 +42,12 @@
 
 	<xs:complexType name="AuthorType">
 		<xs:sequence>
-			<xs:element name="fullName" type="xs:string" minOccurs="1"/>
-			<xs:element name="displayName" type="xs:string" minOccurs="1"/>
-			<xs:element name="firstName" type="xs:string"/>
-			<xs:element name="lastName" type="xs:string"/>
-			<xs:element name="middleName" type="xs:string"/>
-			<xs:element name="additionalNames">
+			<xs:element name="fullName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="displayName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="firstName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="lastName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="middleName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="additionalNames" minOccurs="0" maxOccurs="1">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="additionalName" minOccurs="1" maxOccurs="unbounded" type="xs:string"/>
