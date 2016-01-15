@@ -1,59 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <primaryDocument visible="true" version="1.0" id="10000">
-	<indexCard>
-		<title>Test Document</title>
+	<!-- version and id fields are required -->
+	<sections>
+		<!--
+			The canon section should contain the most complete information about the document
+			If another section is missing information (e.g. title), the information will be inherited from the canon section.
 
-		<dates>
-			<!-- this is the date that will be displayed on the index card -->
-			<displayDate>2015, July 16 1980</displayDate>
-			<date>
-				<year>2015</year>
-			</date>
-			<date>
-				<year>1980</year>
-				<month>7</month>
-				<day>16</day>
-			</date>
-		</dates>
-		<authors>
+			The values in the canon section may never actually be _displayed_ on the site. But they will be used for search, so it is
+			important they be accurate.
+		-->
+		<canon>
+			<titles>
+				<!-- A document can have multiple titles. The document will be searchable under all of them -->
+				<display>The best document ever</display>
+				<title>The best document ever ever ever ever</title>
+				<title>Another name for the best document</title>
+				<title>Yet another name for it.</title>
+			</titles>
+
+			<pages>39</pages>
+
+			<mediaTypes>
+				<!-- Will come up in a search as both book and pamphlet, but will only be displayed as book -->
+				<mediaType>Book</mediaType>
+				<mediaType>Pamphlet</mediaType>
+
+				<display>Book</display>
+			</mediaTypes>
+
+			<dates>
+				<!--
+					A display tag indicates how some set of information should be _displayed_, i.e. presented to the user
+					Here, we combine the two different dates into a single string.
+
+					This is not a formal XML thing, but is a convention I am enforcing on the document.
+
+					There can only ever be one <display> tag for a given set. That is, one display tag for <titles>, one for <dates", etc.
+				-->
+				<display>2015, July 16 1980</display>
+				<!-- multiple dates can be used -->
+				<date>
+					<!-- partial dates are okay -->
+					<year>2015</year>
+				</date>
+				<date>
+					<year>1980</year>
+					<month>7</month>
+					<day>16</day>
+				</date>
+			</dates>
+			<authors>
+				<display>T. Watson and Scott Reid, as members of the Awesome Committee</display>
+
 				<individualAuthor>
 					<fullName>Terrence C. Watson</fullName>
-					<displayName>Terrence Watson</displayName>
+					<display>Terrence Watson</display>
 					<firstName>Terrence</firstName>
 					<lastName>Watson</lastName>
 					<middleName>Charles</middleName>
 					<middleInitial>C</middleInitial>
 				</individualAuthor>
+
 				<individualAuthor>
 					<fullName>Scott Reid</fullName>
-					<displayName>Scott Reid</displayName>
+					<display>Scott Reid</display>
+					<!-- additional names will be treated like aliases for searching -->
 					<additionalName>Scott Reid, MP</additionalName>
 					<additionalName>Scottius Reidus</additionalName>
 				</individualAuthor>
 
 				<corporateAuthor>
 					<fullName>Committee to do Awesome things For Everyone</fullName>
-					<displayName>Awesome Committee</displayName>
+					<display>Awesome Committee</display>
 					<additionalName>Royal Committee of Awesome Awesome Awesome</additionalName>
 				</corporateAuthor>
+			</authors>
 
-		</authors>
-	</indexCard>
+			<languages>
+				<!-- a bilingual document -->
+				<language>French</language>
+				<language>English</language>
+			</languages>
+		</canon>
+
+		<!--
+				On primary documents, the index card is the view of a document you get when you click on its name in search results.
+				Because the document gets the full page, more information can perhaps be displayed.
+
+				Any tag here will override completely the tag in the canon section. For example, if I specify an authors section here, it will complete replace, on the index card, the information in Canon.
+
+				At the same time, many documents may not even need an index card section, if the information in canon is sufficiently formatted for the index card.
+		-->
+		<indexCard>
+			<!-- This index card section is going to omit a <titles> tag.
+				What that means is that the title of the document on the index card will be The Best Document Ever
+			-->
+
+			<!-- In fact, I am going to leave this section empty. That means that the index card for this document will be entirely populated by the information in the Canon section -->
+		</indexCard>
+		<!-- The search result section is what comes up when a document is displayed in search results.
+		     Here, we may want to display a shorter title that combines information -->
+		<searchResults>
+			<titles>
+				<display>Best Document (7/16/1980 and 2015)</display>
+			</titles>
+		</searchResults>
+	</sections>
+
 	<files>
+		<!-- multiple PDF files are okay -->
 		<pdf>
 			<path>/test/path</path>
 			<name>somepdf_part1.pdf</name>
 			<!-- for a bilingual document, include both languages -->
 			<language>English</language>
 			<language>French</language>
+
 		</pdf>
 		<pdf>
 			<path>/test/path</path>
 			<name>somepdf_part2.pdf</name>
-				<language>English</language>
-				<language>French</language>
+			<language>English</language>
+			<language>French</language>
 		</pdf>
 		<pdf>
+			<!-- a unilingual PDF -->
 			<path>/another/path</path>
 			<name>another.pdf</name>
 			<language>English</language>
@@ -61,10 +132,7 @@
 		<txt>
 			<path>/some/other/path</path>
 			<name>text.txt</name>
-			<languages>
-				<language>French</language>
-			</languages>
-
+			<language>French</language>
 		</txt>
 		<html>
 			<path>/some/html/path</path>
@@ -73,4 +141,50 @@
 		</html>
 	</files>
 
+	<!-- categories and keywords. There will be a separate XML document that describes the hierarchical relationship between categories -->
+	<categories>
+		<category>
+			Canadian history
+		</category>
+		<category>
+			U.S. history
+		</category>
+	</categories>
+
+	<keywords>
+		<!-- just a grab bag of keywords -->
+		<keyword>Hockey book</keyword>
+		<keyword>Awesome</keyword>
+	</keywords>
+
+	<!--
+			Documents can be related to other documents by id. The <relationship> tag indicates the kind of relationship that exists between this document and the other one
+			The id is used to create an actual link between this document and the related one.
+	-->
+	<relatedDocuments>
+		<relatedDocument>
+			<id>AnotherDocumentID</id>
+			<display>The Complete Committee Report</display>
+			<relationship>part_of_set</relationship>
+		</relatedDocument>
+		<relatedDocument>
+			<id>TheIdOfAnotherDocument</id>
+			<display>The sequel to this document</display>
+			<relationship>sequel</relationship>
+		</relatedDocument>
+	</relatedDocuments>
+
+
+
+	<!-- here is where some magic happens. Any document can have defined for it some additional search terms.
+	   These terms will be included in the search engine as is. This makes this system flexible
+
+	   For example, suppose we want to start including "written by Member of Parliament" as a searchable field. Here is how we would do that.
+   -->
+	<searchTerms>
+		<searchTerm>
+			<field>written_by_mp</field>
+			<value>true</value>
+		</searchTerm>
+	</searchTerms>
 </primaryDocument>
