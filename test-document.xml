@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<primaryDocument visible="true" version="1.0" id="10000">
-	<!-- version and id fields are required -->
+<primaryDocument visible="true" version="1.0" id="best_document_ever">
+	<!-- version and id fields are required, and id must be unique. -->
 	<sections>
 		<!--
 			The canon section should contain the most complete information about the document
