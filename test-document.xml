@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <primaryDocument visible="true" version="1.0" id="best_document_ever">
 	<!-- version and id fields are required, and id must be unique. -->
+	<canon>
+		<titles>
+			<!-- some alternatives for title specification -->
+			<!-- Alternative 1:
+				Title on index card will be "The best document ever ever ever"
+				Title in searchResults will be "The best document ever"
+				Other titles will be included in search engine, but not displayed
+			-->
+			<title indexCard="true">The best document ever ever ever</title>
+			<title searchResults="true">The best document ever</title>
+			<title>Another name for the best document</title>
+			<title>Yet another name for the document</title>
+
+			<!-- Alternative 2:
+				Title on index card and in search results will be "Bernie Sanders sucks"
+			-->
+
+			<title indexCard="true" searchResults="true">Bernie Sanders sucks</title>
+
+
+			<!-- Alternative 3: Bilingual titles. One title will be used for French display, the other for English -->
+			<title indexCard="true" searchResults="true" language="fr">French title</title>
+			<title indexCard="true" searchResults="true" language="en">English title</title>
+
+			<!-- Alternative 4: Title will be used for index card, but not put into the search engine -->
+			<title indexCard="true" searchable="false">Do not search this</title>
+
+		</titles>
+
+		<pages>39</pages>
+
+		<mediaTypes>
+			<mediaType>Book</mediaType>
+			<mediaType>Pamphlet</mediaType>
+			<!-- we want to display Book/Pamphlet on the index card, but we don't want "Book / pamphlet" in the search engine -->
+			<mediaType searchable="false" indexCard="true" searchResults="true">Book/Pamphlet</mediaType>
+		</mediaTypes>
+
+		<dates>
+			
+		</dates>
+	</canon>
 	<sections>
 		<!--
 			The canon section should contain the most complete information about the document
