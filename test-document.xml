@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <primaryDocument visible="true" version="1.0" id="best_document_ever">
 	<!-- version and id fields are required, and id must be unique. -->
+
+	<search>
+		
+	</search>
+	<display>
+		<english>
+			<indexCard>
+				<title>The best document ever</title>
+			</indexCard>
+			<searchResults>
+				<title>The best document (1980)</title>
+			</searchResults>
+		</english>
+		<french>
+			<indexCard>
+				<title>Le best document ever</title>
+			</indexCard>
+			<searchResults>
+				<title>Le best document (1980)</title>
+			</searchResults>
+		</french>
+	</display>
+
 	<sections>
 		<!--
 			The canon section should contain the most complete information about the document
@@ -17,6 +40,7 @@
 				<title>Another name for the best document</title>
 				<title>Yet another name for it.</title>
 			</titles>
+
 
 			<pages>39</pages>
 

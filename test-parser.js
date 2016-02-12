@@ -4,7 +4,8 @@ var strict = true
 	, util = require("util")
 	, options = {
 		explicitArray: false,
-		async: true
+		async: true,
+		trim: true
 	}
 ;
 
