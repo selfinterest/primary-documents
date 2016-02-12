@@ -44,12 +44,17 @@
     "angular-animate": "^1.4.7",
     "angular-bootstrap-npm": "^0.14.3",
     "angular-ui-router": "^0.2.15",
+    "bluebird": "^3.3.0",
     "bootstrap-less": "^3.3.8",
+    "commander": "^2.9.0",
+    "debug": "^2.2.0",
     "jquery": "^2.1.4",
     "ng-fx": "^2.0.3",
     "open-browser-webpack-plugin": "0.0.1",
     "rc": "^1.1.5",
     "sax": "^1.1.4",
+    "traverse": "^0.6.6",
+    "winston": "^2.1.1",
     "xml2js": "^0.4.15"
   }
 }

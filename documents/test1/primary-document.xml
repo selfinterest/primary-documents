@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<primaryDocument visible="true" version="1.0" id="test1">
+    <search>
+        <titles>
+            <title display-lang="english">The best best best document ever</title>
+            <title>Another name for the best document</title>
+            <title display-lang="french">Le best document ever</title>
+        </titles>
+    </search>
+    <display>
+        <indexCard>
+            <title>Test</title>
+        </indexCard>
+    </display>
+</primaryDocument>

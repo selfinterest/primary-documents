@@ -3,15 +3,48 @@
 	<!-- version and id fields are required, and id must be unique. -->
 
 	<search>
-		
+		<titles>
+			<title display-lang="english">The best best best document ever</title>
+			<title>Another name for the best document</title>
+			<title display-lang="french">Le best document ever</title>
+		</titles>
+		<authors>
+			<individual>
+				<fullName>Terrence C. Watson</fullName>
+				<firstName>Terrence</firstName>
+				<lastName>Watson</lastName>
+				<middleName>Charles</middleName>
+				<middleInitial>C</middleInitial>
+			</individual>
+			<corporate>
+				<fullName>Committee to do Awesome things For Everyone</fullName>
+			</corporate>
+		</authors>
+		<dates>
+			<date>
+				<!-- partial dates are okay -->
+				<year>2015</year>
+			</date>
+			<date>
+				<year>1980</year>
+				<month>7</month>
+				<day>16</day>
+			</date>
+		</dates>
 	</search>
 	<display>
 		<english>
 			<indexCard>
 				<title>The best document ever</title>
+				<author>Scott Reid</author>
+				<date>2015, July 16 1980</date>
+				<mediaType>Pamphlet</mediaType>
 			</indexCard>
 			<searchResults>
 				<title>The best document (1980)</title>
+				<author>S. Reid</author>
+				<date>1980, 2015</date>
+				<mediaType>Pamphlet</mediaType>
 			</searchResults>
 		</english>
 		<french>
