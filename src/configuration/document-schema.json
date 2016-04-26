@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "https://primarydocuments.ca/document-schema.json",
+  "title": "Document",
+  "description": "A primary document",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "The unique identifier for the document",
+      "type": "string"
+    },
+    "version": {
+      "description": "The version of the document",
+      "type": "string"
+    },
+    "files": {
+      "description": "Files associated with this document",
+      "$ref": "#/definitions/files"
+    },
+    "show": {
+      "description": "If false, hide this document completely",
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": ["id", "version"],
+  "additionalProperties": false,
+  "definitions": {
+    "files": {
+      "type": "object",
+      "description": "Various file types that can be associated with an object. The anyOf block means that at least ONE of the types must be included, if the files block is included at all.",
+      "anyOf": [
+        {"required": ["pdf"]},
+        {"required": ["txt"]},
+        {"required": ["html"]}
+      ],
+      "properties": {
+        "pdf": {
+          "description": "PDF files associated with this document",
+          "$ref": "#/definitions/fileSet"
+        },
+        "txt": {
+          "description": "Text files associated with this document",
+          "$ref": "#/definitions/fileSet"
+        },
+        "html": {
+          "description": "HTML files associated with this document",
+          "$ref": "#/definitions/fileSet"
+        }
+      }
+    },
+    "fileSet": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "array",
+        "additionalItems": false,
+        "minItems": 1,
+        "uniqueItems": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "filename": {
+              "description": "The name of the file",
+              "type": "string"
+            }
+          },
+          "required": ["filename"],
+          "additionalProperties": false
+
+        }
+
+      }
+    }
+  }
+}
+
